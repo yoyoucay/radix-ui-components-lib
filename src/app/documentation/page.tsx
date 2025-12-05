@@ -7,7 +7,7 @@ export default function DocumentationPage() {
                 {/* Header */}
                 <div className="mb-12">
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                        Radix UI Components Library
+                        UI Kit - Radix UI
                     </h1>
                     <p className="text-xl text-gray-600">
                         A modern, accessible component library built with Radix UI primitives and styled with Tailwind CSS.
@@ -39,14 +39,40 @@ export default function DocumentationPage() {
                 {/* Installation */}
                 <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">Installation</h2>
-                    <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
-                        <pre className="text-sm">
-                            <code>{`npm install
-# or
-yarn install
-# or
-pnpm install`}</code>
-                        </pre>
+                    
+                    <div className="mb-6">
+                        <h3 className="text-xl font-semibold text-gray-900 mb-3">Option 1: Install as Library (Recommended)</h3>
+                        <p className="text-gray-700 mb-3">Install the required dependencies in your existing project:</p>
+                        <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                            <pre className="text-sm">
+                                <code>{`npm install @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator @radix-ui/react-slot class-variance-authority clsx tailwind-merge
+
+# or with yarn
+yarn add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator @radix-ui/react-slot class-variance-authority clsx tailwind-merge
+
+# or with pnpm
+pnpm add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator @radix-ui/react-slot class-variance-authority clsx tailwind-merge
+
+# or with bun
+bun add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator @radix-ui/react-slot class-variance-authority clsx tailwind-merge`}</code>
+                            </pre>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-3">Option 2: Clone Demo Project</h3>
+                        <p className="text-gray-700 mb-3">To run the demo and explore all components:</p>
+                        <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                            <pre className="text-sm">
+                                <code>{`# Clone the repository
+git clone https://github.com/yoyoucay/radix-ui-components-lib.git
+cd radix-ui-components-lib
+
+# Install dependencies
+npm install
+# or yarn install / pnpm install / bun install`}</code>
+                            </pre>
+                        </div>
                     </div>
                 </section>
 
@@ -56,7 +82,7 @@ pnpm install`}</code>
                 <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-900 mb-6">Getting Started</h2>
                     <p className="text-gray-700 mb-4">
-                        Import and use components in your React application:
+                        After installing dependencies, copy the component files to your project and import them:
                     </p>
                     <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
                         <pre className="text-sm">
@@ -174,6 +200,9 @@ pnpm dev`}</code>
                 {/* Footer */}
                 <footer className="mt-16 pt-8 border-t border-gray-200 text-center text-gray-600">
                     <p>MIT License</p>
+                    <p className="mt-2">
+                        Made with ❤️ by the UI Kit - Radix UI team
+                    </p>
                     <p className="mt-2">
                         Contributions are welcome! Please feel free to submit a Pull Request.
                     </p>

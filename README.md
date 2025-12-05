@@ -1,4 +1,4 @@
-# Radix UI Components Library
+# UI Kit - Radix UI
 
 A production-ready, accessible component library built with Radix UI primitives and styled with Tailwind CSS. Perfect for building modern React applications with a consistent design system.
 
@@ -19,23 +19,63 @@ A production-ready, accessible component library built with Radix UI primitives 
 
 ## 📦 Installation
 
-### Using npm
+### Option 1: Install as a Library (Recommended)
+
+Install the required dependencies in your existing project:
+
+#### Using npm
 
 ```bash
-npm install @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator class-variance-authority clsx tailwind-merge
+npm install @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator @radix-ui/react-slot class-variance-authority clsx tailwind-merge
 ```
 
-### Using yarn
+#### Using yarn
 
 ```bash
-yarn add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator class-variance-authority clsx tailwind-merge
+yarn add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator @radix-ui/react-slot class-variance-authority clsx tailwind-merge
 ```
 
-### Using pnpm
+#### Using pnpm
 
 ```bash
-pnpm add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator class-variance-authority clsx tailwind-merge
+pnpm add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator @radix-ui/react-slot class-variance-authority clsx tailwind-merge
 ```
+
+#### Using bun
+
+```bash
+bun add @radix-ui/react-dialog @radix-ui/react-dropdown-menu @radix-ui/react-tooltip @radix-ui/react-separator @radix-ui/react-slot class-variance-authority clsx tailwind-merge
+```
+
+### Option 2: Clone Demo Project
+
+To run the demo and explore all components:
+
+```bash
+# Clone the repository
+git clone https://github.com/yoyoucay/radix-ui-components-lib.git
+cd radix-ui-components-lib
+
+# Install dependencies
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+
+# Run the demo
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the interactive demos.
 
 ## 🚀 Quick Start
 
@@ -337,4 +377,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by the Radix UI Components team
+Made with ❤️ by the UI Kit - Radix UI team

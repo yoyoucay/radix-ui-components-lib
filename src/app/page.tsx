@@ -5,7 +5,7 @@ export default function Home() {
         {/* Header */}
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-5xl font-bold text-slate-900">
-            Radix UI Components Library
+            UI Kit - Radix UI
           </h1>
           <p className="text-xl text-slate-600">
             Beautiful, accessible components for Next.js projects
