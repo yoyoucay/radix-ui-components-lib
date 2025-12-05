@@ -76,7 +76,8 @@ var Button = React3.forwardRef(
       Comp,
       __spreadValues({
         className: cn(buttonVariants({ variant, size, className })),
-        ref
+        ref,
+        suppressHydrationWarning: true
       }, props)
     );
   }
