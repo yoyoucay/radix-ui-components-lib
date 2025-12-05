@@ -1,65 +1,175 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
+      <div className="mx-auto max-w-6xl">
+        {/* Header */}
+        <div className="mb-12 text-center">
+          <h1 className="mb-4 text-5xl font-bold text-slate-900">
+            Radix UI Components Library
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+          <p className="text-xl text-slate-600">
+            Beautiful, accessible components for Next.js projects
+          </p>
+          <div className="mt-6 flex justify-center gap-4">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="https://github.com/yoyoucay/radix-ui-components-lib"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-slate-900 px-6 py-3 font-medium text-white hover:bg-slate-800"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              View on GitHub
+            </a>
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="/EXAMPLE.md"
+              className="rounded-lg border border-slate-300 bg-white px-6 py-3 font-medium text-slate-900 hover:bg-slate-50"
             >
-              Learning
-            </a>{" "}
-            center.
+              Documentation
+            </a>
+          </div>
+        </div>
+
+        {/* Features Grid */}
+        <div className="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <FeatureCard
+            title="🎨 Pre-styled"
+            description="Beautiful components built on Radix UI primitives"
+          />
+          <FeatureCard
+            title="🔧 Customizable"
+            description="Easy to theme and extend with Tailwind CSS"
+          />
+          <FeatureCard
+            title="📦 Tree-shakeable"
+            description="Import only what you need, optimized bundle size"
+          />
+          <FeatureCard
+            title="♿ Accessible"
+            description="WCAG compliant with keyboard navigation"
+          />
+          <FeatureCard
+            title="🎯 TypeScript"
+            description="Full type safety and autocomplete support"
+          />
+          <FeatureCard
+            title="📱 Responsive"
+            description="Mobile-first design that works everywhere"
+          />
+        </div>
+
+        {/* Installation */}
+        <div className="mb-12 rounded-lg bg-white p-8 shadow-lg">
+          <h2 className="mb-4 text-2xl font-bold text-slate-900">
+            Quick Start
+          </h2>
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2 font-medium text-slate-700">
+                1. Install the package
+              </p>
+              <code className="block rounded-md bg-slate-900 p-4 text-sm text-white">
+                bun add git+https://github.com/yoyoucay/radix-ui-components-lib.git
+              </code>
+            </div>
+            <div>
+              <p className="mb-2 font-medium text-slate-700">2. Import styles</p>
+              <code className="block rounded-md bg-slate-900 p-4 text-sm text-white">
+                import &apos;radix-ui-components-lib/styles&apos;;
+              </code>
+            </div>
+            <div>
+              <p className="mb-2 font-medium text-slate-700">
+                3. Use components
+              </p>
+              <code className="block rounded-md bg-slate-900 p-4 text-sm text-white">
+                import &#123; Button, Navbar &#125; from
+                &apos;radix-ui-components-lib&apos;;
+              </code>
+            </div>
+          </div>
+        </div>
+
+        {/* Components */}
+        <div className="mb-12 rounded-lg bg-white p-8 shadow-lg">
+          <h2 className="mb-6 text-2xl font-bold text-slate-900">
+            Available Components
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <ComponentCard
+              name="Button"
+              description="Versatile button with multiple variants and sizes"
+            />
+            <ComponentCard
+              name="Dialog"
+              description="Modal dialog for alerts and confirmations"
+            />
+            <ComponentCard
+              name="Dropdown Menu"
+              description="Contextual menu with nested support"
+            />
+            <ComponentCard
+              name="Tooltip"
+              description="Accessible tooltips for additional information"
+            />
+            <ComponentCard
+              name="Navbar"
+              description="Responsive navigation bar with mobile menu"
+            />
+            <ComponentCard
+              name="Sidebar"
+              description="Collapsible sidebar with nested navigation"
+            />
+            <ComponentCard
+              name="Separator"
+              description="Visual divider for content sections"
+            />
+            <ComponentCard
+              name="More coming..."
+              description="More components are being added regularly"
+            />
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center text-slate-600">
+          <p>
+            Built with ❤️ using Radix UI, Tailwind CSS, and Next.js
+          </p>
+          <p className="mt-2">
+            <a
+              href="https://github.com/yoyoucay/radix-ui-components-lib"
+              className="text-blue-600 hover:underline"
+            >
+              GitHub
+            </a>
+            {' · '}
+            <a href="/EXAMPLE.md" className="text-blue-600 hover:underline">
+              Examples
+            </a>
+            {' · '}
+            <a href="/API.md" className="text-blue-600 hover:underline">
+              API Docs
+            </a>
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
+    </div>
+  );
+}
+
+function FeatureCard({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="rounded-lg border border-slate-200 bg-white p-6">
+      <h3 className="mb-2 text-lg font-semibold text-slate-900">{title}</h3>
+      <p className="text-slate-600">{description}</p>
+    </div>
+  );
+}
+
+function ComponentCard({ name, description }: { name: string; description: string }) {
+  return (
+    <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+      <h4 className="mb-1 font-semibold text-slate-900">{name}</h4>
+      <p className="text-sm text-slate-600">{description}</p>
     </div>
   );
 }

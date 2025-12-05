@@ -89,6 +89,14 @@ If you're using TypeScript, add path aliases to `tsconfig.json`:
 
 ## 📖 Usage Examples
 
+For detailed examples and usage patterns, see:
+
+- **[📘 Example Usage Guide](./EXAMPLE.md)** - Comprehensive examples for all components
+- **[📚 Component API Reference](./COMPONENTS.md)** - Complete API documentation
+- **[🔧 API Documentation](./API.md)** - Setup, configuration, and advanced usage
+
+### Quick Example
+
 ### Button Component
 
 ```tsx
@@ -347,6 +355,12 @@ MIT License - feel free to use this library in your projects!
 ## 📞 Support
 
 For issues, questions, or contributions, please open an issue on GitHub.
+
+## 📚 Documentation
+
+- **[📘 Example Usage Guide](./EXAMPLE.md)** - Live examples and code samples
+- **[📚 Component API Reference](./COMPONENTS.md)** - Complete component documentation
+- **[🔧 API Documentation](./API.md)** - Setup, TypeScript, and advanced features
 
 ---
 
