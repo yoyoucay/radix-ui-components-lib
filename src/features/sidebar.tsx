@@ -42,30 +42,39 @@ export function Sidebar({
   return (
     <aside
       className={cn(
-        'flex h-full flex-col border-r border-slate-200 bg-white transition-all duration-300',
+        'flex h-screen flex-col border-r border-slate-200 bg-white transition-all duration-300 ease-in-out',
         collapsed ? 'w-16' : 'w-64',
         className
       )}
     >
       {/* Header */}
       {header && (
-        <div className={cn('border-b border-slate-200 p-4', collapsed && 'px-2')}>
+        <div className={cn(
+          'flex h-16 items-center border-b border-slate-200 px-4',
+          collapsed && 'justify-center px-2'
+        )}>
           {collapsed ? (
-            <div className="flex justify-center">{header}</div>
+            <div className="flex items-center justify-center overflow-hidden">
+              {typeof header === 'string' ? header.charAt(0) : header}
+            </div>
           ) : (
-            header
+            <div className="overflow-hidden">{header}</div>
           )}
         </div>
       )}
 
       {/* Collapse Button */}
       {collapsible && (
-        <div className="flex justify-end p-2">
+        <div className={cn(
+          'flex items-center border-b border-slate-200 p-2',
+          collapsed ? 'justify-center' : 'justify-end'
+        )}>
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setCollapsed(!collapsed)}
             className="h-8 w-8 p-0"
+            title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +86,7 @@ export function Sidebar({
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className={cn('h-4 w-4 transition-transform', collapsed && 'rotate-180')}
+              className={cn('h-4 w-4 transition-transform duration-300', collapsed && 'rotate-180')}
             >
               <path d="m15 18-6-6 6-6" />
             </svg>
@@ -86,9 +95,9 @@ export function Sidebar({
       )}
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-2">
+      <nav className="flex-1 overflow-y-auto overflow-x-hidden p-2 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
         {items.map((section, sectionIdx) => (
-          <div key={sectionIdx} className="mb-4">
+          <div key={sectionIdx} className={cn('mb-4', sectionIdx === 0 && 'mt-0')}>
             {section.title && !collapsed && (
               <h3 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
                 {section.title}
@@ -108,8 +117,13 @@ export function Sidebar({
 
       {/* Footer */}
       {footer && (
-        <div className={cn('border-t border-slate-200 p-4', collapsed && 'px-2')}>
-          {footer}
+        <div className={cn(
+          'border-t border-slate-200 p-4',
+          collapsed && 'flex justify-center px-2'
+        )}>
+          <div className={cn(collapsed && 'flex items-center justify-center')}>
+            {footer}
+          </div>
         </div>
       )}
     </aside>
@@ -128,49 +142,60 @@ function SidebarItemRenderer({
   const [expanded, setExpanded] = React.useState(false);
   const hasChildren = item.children && item.children.length > 0;
 
-  if (hasChildren) {
+  // Don't show nested items when sidebar is collapsed
+  if (hasChildren && !collapsed) {
     return (
       <div>
         <button
           onClick={() => setExpanded(!expanded)}
           className={cn(
-            'flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-slate-100',
-            item.active && 'bg-slate-100 text-slate-900',
-            collapsed && 'justify-center px-2',
-            level > 0 && 'ml-4'
+            'flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2',
+            item.active && 'bg-slate-900 text-white hover:bg-slate-800',
+            !item.active && 'text-slate-700',
+            level > 0 && !collapsed && 'ml-6'
           )}
-          title={collapsed ? item.label : undefined}
         >
-          {item.icon && <span className="flex-shrink-0">{item.icon}</span>}
-          {!collapsed && (
-            <>
-              <span className="flex-1 text-left">{item.label}</span>
-              {item.badge && (
-                <span className="rounded-full bg-slate-200 px-2 py-0.5 text-xs">
-                  {item.badge}
-                </span>
-              )}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={cn('h-4 w-4 flex-shrink-0 transition-transform', expanded && 'rotate-180')}
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </>
+          {item.icon && (
+            <span className={cn('flex h-5 w-5 items-center justify-center flex-shrink-0')}>
+              {item.icon}
+            </span>
           )}
+          <span className="flex-1 text-left truncate">{item.label}</span>
+          {item.badge && (
+            <span className={cn(
+              'rounded-full px-2 py-0.5 text-xs font-medium',
+              item.active ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
+            )}>
+              {item.badge}
+            </span>
+          )}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={cn(
+              'h-4 w-4 flex-shrink-0 transition-transform duration-200',
+              expanded && 'rotate-180'
+            )}
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
         </button>
-        {expanded && !collapsed && (
-          <div className="space-y-1">
+        {expanded && (
+          <div className="mt-1 space-y-1">
             {item.children?.map((child, idx) => (
-              <SidebarItemRenderer key={idx} item={child} collapsed={collapsed} level={level + 1} />
+              <SidebarItemRenderer
+                key={idx}
+                item={child}
+                collapsed={collapsed}
+                level={level + 1}
+              />
             ))}
           </div>
         )}
@@ -178,23 +203,58 @@ function SidebarItemRenderer({
     );
   }
 
+  // Collapsed state - show only icon with tooltip
+  if (hasChildren && collapsed) {
+    return (
+      <Link
+        href={item.href}
+        className={cn(
+          'flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2',
+          item.active && 'bg-slate-900 text-white hover:bg-slate-800',
+          !item.active && 'text-slate-700'
+        )}
+        title={item.label}
+      >
+        {item.icon ? (
+          <span className="flex h-5 w-5 items-center justify-center flex-shrink-0">
+            {item.icon}
+          </span>
+        ) : (
+          <span className="text-xs font-semibold">{item.label.charAt(0)}</span>
+        )}
+      </Link>
+    );
+  }
+
+  // Regular item (leaf node)
   return (
     <Link
       href={item.href}
       className={cn(
-        'flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-slate-100',
-        item.active && 'bg-slate-100 text-slate-900',
-        collapsed && 'justify-center px-2',
-        level > 0 && 'ml-4'
+        'flex items-center gap-2 rounded-md transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2',
+        collapsed ? 'h-10 w-10 justify-center' : 'px-3 py-2',
+        item.active && 'bg-slate-900 text-white hover:bg-slate-800',
+        !item.active && 'text-slate-700',
+        level > 0 && !collapsed && 'ml-6',
+        'text-sm font-medium'
       )}
       title={collapsed ? item.label : undefined}
     >
-      {item.icon && <span className="flex-shrink-0">{item.icon}</span>}
+      {item.icon ? (
+        <span className={cn('flex h-5 w-5 items-center justify-center flex-shrink-0')}>
+          {item.icon}
+        </span>
+      ) : (
+        !collapsed && <span className="w-5" />
+      )}
       {!collapsed && (
         <>
-          <span className="flex-1">{item.label}</span>
+          <span className="flex-1 truncate">{item.label}</span>
           {item.badge && (
-            <span className="rounded-full bg-slate-200 px-2 py-0.5 text-xs">
+            <span className={cn(
+              'rounded-full px-2 py-0.5 text-xs font-medium flex-shrink-0',
+              item.active ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
+            )}>
               {item.badge}
             </span>
           )}

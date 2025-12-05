@@ -545,19 +545,26 @@ function Sidebar({
     "aside",
     {
       className: cn(
-        "flex h-full flex-col border-r border-slate-200 bg-white transition-all duration-300",
+        "flex h-screen flex-col border-r border-slate-200 bg-white transition-all duration-300 ease-in-out",
         collapsed ? "w-16" : "w-64",
         className
       ),
       children: [
-        header && /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("border-b border-slate-200 p-4", collapsed && "px-2"), children: collapsed ? /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex justify-center", children: header }) : header }),
-        collapsible && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex justify-end p-2", children: /* @__PURE__ */ jsxRuntime.jsx(
+        header && /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn(
+          "flex h-16 items-center border-b border-slate-200 px-4",
+          collapsed && "justify-center px-2"
+        ), children: collapsed ? /* @__PURE__ */ jsxRuntime.jsx("div", { className: "flex items-center justify-center overflow-hidden", children: typeof header === "string" ? header.charAt(0) : header }) : /* @__PURE__ */ jsxRuntime.jsx("div", { className: "overflow-hidden", children: header }) }),
+        collapsible && /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn(
+          "flex items-center border-b border-slate-200 p-2",
+          collapsed ? "justify-center" : "justify-end"
+        ), children: /* @__PURE__ */ jsxRuntime.jsx(
           Button,
           {
             variant: "ghost",
             size: "sm",
             onClick: () => setCollapsed(!collapsed),
             className: "h-8 w-8 p-0",
+            title: collapsed ? "Expand sidebar" : "Collapse sidebar",
             children: /* @__PURE__ */ jsxRuntime.jsx(
               "svg",
               {
@@ -570,18 +577,21 @@ function Sidebar({
                 strokeWidth: "2",
                 strokeLinecap: "round",
                 strokeLinejoin: "round",
-                className: cn("h-4 w-4 transition-transform", collapsed && "rotate-180"),
+                className: cn("h-4 w-4 transition-transform duration-300", collapsed && "rotate-180"),
                 children: /* @__PURE__ */ jsxRuntime.jsx("path", { d: "m15 18-6-6 6-6" })
               }
             )
           }
         ) }),
-        /* @__PURE__ */ jsxRuntime.jsx("nav", { className: "flex-1 overflow-y-auto p-2", children: items.map((section, sectionIdx) => /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "mb-4", children: [
+        /* @__PURE__ */ jsxRuntime.jsx("nav", { className: "flex-1 overflow-y-auto overflow-x-hidden p-2 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent", children: items.map((section, sectionIdx) => /* @__PURE__ */ jsxRuntime.jsxs("div", { className: cn("mb-4", sectionIdx === 0 && "mt-0"), children: [
           section.title && !collapsed && /* @__PURE__ */ jsxRuntime.jsx("h3", { className: "mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-slate-500", children: section.title }),
           section.title && collapsed && sectionIdx > 0 && /* @__PURE__ */ jsxRuntime.jsx(Separator2, { className: "my-2" }),
           /* @__PURE__ */ jsxRuntime.jsx("div", { className: "space-y-1", children: section.items.map((item, itemIdx) => /* @__PURE__ */ jsxRuntime.jsx(SidebarItemRenderer, { item, collapsed }, itemIdx)) })
         ] }, sectionIdx)) }),
-        footer && /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn("border-t border-slate-200 p-4", collapsed && "px-2"), children: footer })
+        footer && /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn(
+          "border-t border-slate-200 p-4",
+          collapsed && "flex justify-center px-2"
+        ), children: /* @__PURE__ */ jsxRuntime.jsx("div", { className: cn(collapsed && "flex items-center justify-center"), children: footer }) })
       ]
     }
   );
@@ -594,63 +604,94 @@ function SidebarItemRenderer({
   var _a;
   const [expanded, setExpanded] = React3__namespace.useState(false);
   const hasChildren = item.children && item.children.length > 0;
-  if (hasChildren) {
+  if (hasChildren && !collapsed) {
     return /* @__PURE__ */ jsxRuntime.jsxs("div", { children: [
       /* @__PURE__ */ jsxRuntime.jsxs(
         "button",
         {
           onClick: () => setExpanded(!expanded),
           className: cn(
-            "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-slate-100",
-            item.active && "bg-slate-100 text-slate-900",
-            collapsed && "justify-center px-2",
-            level > 0 && "ml-4"
+            "flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2",
+            item.active && "bg-slate-900 text-white hover:bg-slate-800",
+            !item.active && "text-slate-700",
+            level > 0 && !collapsed && "ml-6"
           ),
-          title: collapsed ? item.label : void 0,
           children: [
-            item.icon && /* @__PURE__ */ jsxRuntime.jsx("span", { className: "flex-shrink-0", children: item.icon }),
-            !collapsed && /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-              /* @__PURE__ */ jsxRuntime.jsx("span", { className: "flex-1 text-left", children: item.label }),
-              item.badge && /* @__PURE__ */ jsxRuntime.jsx("span", { className: "rounded-full bg-slate-200 px-2 py-0.5 text-xs", children: item.badge }),
-              /* @__PURE__ */ jsxRuntime.jsx(
-                "svg",
-                {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "24",
-                  height: "24",
-                  viewBox: "0 0 24 24",
-                  fill: "none",
-                  stroke: "currentColor",
-                  strokeWidth: "2",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round",
-                  className: cn("h-4 w-4 flex-shrink-0 transition-transform", expanded && "rotate-180"),
-                  children: /* @__PURE__ */ jsxRuntime.jsx("path", { d: "m6 9 6 6 6-6" })
-                }
-              )
-            ] })
+            item.icon && /* @__PURE__ */ jsxRuntime.jsx("span", { className: cn("flex h-5 w-5 items-center justify-center flex-shrink-0"), children: item.icon }),
+            /* @__PURE__ */ jsxRuntime.jsx("span", { className: "flex-1 text-left truncate", children: item.label }),
+            item.badge && /* @__PURE__ */ jsxRuntime.jsx("span", { className: cn(
+              "rounded-full px-2 py-0.5 text-xs font-medium",
+              item.active ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+            ), children: item.badge }),
+            /* @__PURE__ */ jsxRuntime.jsx(
+              "svg",
+              {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                className: cn(
+                  "h-4 w-4 flex-shrink-0 transition-transform duration-200",
+                  expanded && "rotate-180"
+                ),
+                children: /* @__PURE__ */ jsxRuntime.jsx("path", { d: "m6 9 6 6 6-6" })
+              }
+            )
           ]
         }
       ),
-      expanded && !collapsed && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "space-y-1", children: (_a = item.children) == null ? void 0 : _a.map((child, idx) => /* @__PURE__ */ jsxRuntime.jsx(SidebarItemRenderer, { item: child, collapsed, level: level + 1 }, idx)) })
+      expanded && /* @__PURE__ */ jsxRuntime.jsx("div", { className: "mt-1 space-y-1", children: (_a = item.children) == null ? void 0 : _a.map((child, idx) => /* @__PURE__ */ jsxRuntime.jsx(
+        SidebarItemRenderer,
+        {
+          item: child,
+          collapsed,
+          level: level + 1
+        },
+        idx
+      )) })
     ] });
+  }
+  if (hasChildren && collapsed) {
+    return /* @__PURE__ */ jsxRuntime.jsx(
+      Link__default.default,
+      {
+        href: item.href,
+        className: cn(
+          "flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2",
+          item.active && "bg-slate-900 text-white hover:bg-slate-800",
+          !item.active && "text-slate-700"
+        ),
+        title: item.label,
+        children: item.icon ? /* @__PURE__ */ jsxRuntime.jsx("span", { className: "flex h-5 w-5 items-center justify-center flex-shrink-0", children: item.icon }) : /* @__PURE__ */ jsxRuntime.jsx("span", { className: "text-xs font-semibold", children: item.label.charAt(0) })
+      }
+    );
   }
   return /* @__PURE__ */ jsxRuntime.jsxs(
     Link__default.default,
     {
       href: item.href,
       className: cn(
-        "flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-slate-100",
-        item.active && "bg-slate-100 text-slate-900",
-        collapsed && "justify-center px-2",
-        level > 0 && "ml-4"
+        "flex items-center gap-2 rounded-md transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2",
+        collapsed ? "h-10 w-10 justify-center" : "px-3 py-2",
+        item.active && "bg-slate-900 text-white hover:bg-slate-800",
+        !item.active && "text-slate-700",
+        level > 0 && !collapsed && "ml-6",
+        "text-sm font-medium"
       ),
       title: collapsed ? item.label : void 0,
       children: [
-        item.icon && /* @__PURE__ */ jsxRuntime.jsx("span", { className: "flex-shrink-0", children: item.icon }),
+        item.icon ? /* @__PURE__ */ jsxRuntime.jsx("span", { className: cn("flex h-5 w-5 items-center justify-center flex-shrink-0"), children: item.icon }) : !collapsed && /* @__PURE__ */ jsxRuntime.jsx("span", { className: "w-5" }),
         !collapsed && /* @__PURE__ */ jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [
-          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "flex-1", children: item.label }),
-          item.badge && /* @__PURE__ */ jsxRuntime.jsx("span", { className: "rounded-full bg-slate-200 px-2 py-0.5 text-xs", children: item.badge })
+          /* @__PURE__ */ jsxRuntime.jsx("span", { className: "flex-1 truncate", children: item.label }),
+          item.badge && /* @__PURE__ */ jsxRuntime.jsx("span", { className: cn(
+            "rounded-full px-2 py-0.5 text-xs font-medium flex-shrink-0",
+            item.active ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+          ), children: item.badge })
         ] })
       ]
     }
