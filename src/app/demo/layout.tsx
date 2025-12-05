@@ -33,14 +33,7 @@ export default function DemoLayout({
           },
         ]}
         actions={
-          <div className="flex gap-2">
-            <Button variant="ghost" size="sm">
-              Login
-            </Button>
-            <Button variant="primary" size="sm">
-              Sign Up
-            </Button>
-          </div>
+        <></>
         }
         sticky
       />
