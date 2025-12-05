@@ -19,9 +19,11 @@
   ],
   "scripts": {
     "dev": "next dev",
+    "dev:lib": "tsup --watch",
     "build": "tsup",
-    "build:next": "next build",
+    "build:demo": "next build",
     "start": "next start",
+    "deploy": "bun run build && bun run build:demo",
     "lint": "eslint",
     "type-check": "tsc --noEmit",
     "prepublishOnly": "bun run build"
