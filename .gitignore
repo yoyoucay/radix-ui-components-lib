@@ -45,3 +45,6 @@ tsconfig.json
 /dist
 *.js.map
 *.mjs.map
+
+# bun 
+bun.*

@@ -5,20 +5,20 @@ import Link from 'next/link';
 
 export default function DemoPage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-8 sm:space-y-12">
             {/* Header */}
             <div>
-              <div className="mb-4 flex items-center justify-between">
+              <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <h1 className="mb-2 text-4xl font-bold text-slate-900">
+                  <h1 className="mb-2 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">
                     Component Library Overview
                   </h1>
-                  <p className="text-lg text-slate-600">
+                  <p className="text-base sm:text-lg text-slate-600">
                     Explore our collection of reusable UI components built with Radix UI
                   </p>
                 </div>
                 <Link href="/documentation">
-                  <button className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg">
+                  <button className="rounded-lg bg-blue-600 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg whitespace-nowrap">
                     📚 View Documentation
                   </button>
                 </Link>
@@ -29,13 +29,13 @@ export default function DemoPage() {
 
             {/* Component Grid */}
             <section>
-              <h2 className="mb-6 text-2xl font-bold text-slate-900">Components</h2>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl font-bold text-slate-900">Components</h2>
+              <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {/* Button Card */}
                 <Link href="/demo/buttons">
-                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
-                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition-all hover:shadow-md active:scale-95">
+                    <div className="mb-3 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+                      <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                       </svg>
                     </div>
@@ -50,9 +50,9 @@ export default function DemoPage() {
 
                 {/* Dialog Card */}
                 <Link href="/demo/dialog">
-                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
-                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition-all hover:shadow-md active:scale-95">
+                    <div className="mb-3 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
+                      <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                       </svg>
                     </div>
@@ -67,9 +67,9 @@ export default function DemoPage() {
 
                 {/* Dropdown Menu Card */}
                 <Link href="/demo/dropdown-menu">
-                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
-                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600">
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition-all hover:shadow-md active:scale-95">
+                    <div className="mb-3 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-green-100 text-green-600">
+                      <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                       </svg>
                     </div>
@@ -84,9 +84,9 @@ export default function DemoPage() {
 
                 {/* Tooltip Card */}
                 <Link href="/demo/tooltip">
-                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
-                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-yellow-100 text-yellow-600">
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition-all hover:shadow-md active:scale-95">
+                    <div className="mb-3 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-yellow-100 text-yellow-600">
+                      <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
@@ -101,9 +101,9 @@ export default function DemoPage() {
 
                 {/* Separator Card */}
                 <Link href="/demo/separator">
-                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
-                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
-                      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-4 sm:p-6 shadow-sm transition-all hover:shadow-md active:scale-95">
+                    <div className="mb-3 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
+                      <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                       </svg>
                     </div>
@@ -117,9 +117,9 @@ export default function DemoPage() {
                 </Link>
 
                 {/* Navbar & Sidebar Card */}
-                <div className="cursor-pointer rounded-lg border border-slate-200 bg-white p-6 shadow-sm opacity-60">
-                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-red-100 text-red-600">
-                    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="cursor-pointer rounded-lg border border-slate-200 bg-white p-4 sm:p-6 shadow-sm opacity-60">
+                  <div className="mb-3 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-red-100 text-red-600">
+                    <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                     </svg>
                   </div>
@@ -137,15 +137,15 @@ export default function DemoPage() {
 
             {/* Getting Started */}
             <section>
-              <h2 className="mb-4 text-2xl font-bold text-slate-900">Getting Started</h2>
-              <div className="rounded-lg bg-white p-6 shadow">
+              <h2 className="mb-4 text-xl sm:text-2xl font-bold text-slate-900">Getting Started</h2>
+              <div className="rounded-lg bg-white p-4 sm:p-6 shadow">
                 <div className="space-y-4">
-                  <p className="text-slate-600">
+                  <p className="text-sm sm:text-base text-slate-600">
                     This component library is built with Radix UI primitives and styled with Tailwind CSS.
                     All components are fully accessible and customizable.
                   </p>
-                  <div className="rounded-lg bg-slate-900 p-4 text-slate-50">
-                    <pre className="text-sm">
+                  <div className="rounded-lg bg-slate-900 p-3 sm:p-4 text-slate-50 overflow-x-auto">
+                    <pre className="text-xs sm:text-sm">
                       <code>{`import { Button, Dialog, Tooltip } from '@/components/ui';
 
 <Button variant="primary">Click me</Button>`}</code>

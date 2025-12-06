@@ -46,6 +46,7 @@ export function Sidebar({
         collapsed ? 'w-16' : 'w-64',
         className
       )}
+      style={{ maxHeight: '100vh' }}
     >
       {/* Header */}
       {header && (

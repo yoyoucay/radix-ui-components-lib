@@ -5,10 +5,10 @@ import { Separator } from '@/components/ui/separator';
 
 export default function ButtonsDemo() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       <div>
-        <h1 className="mb-2 text-4xl font-bold text-slate-900">Buttons</h1>
-        <p className="text-lg text-slate-600">
+        <h1 className="mb-2 text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">Buttons</h1>
+        <p className="text-base sm:text-lg text-slate-600">
           Versatile button component with multiple variants and sizes
         </p>
       </div>
@@ -17,8 +17,8 @@ export default function ButtonsDemo() {
 
       {/* Variants */}
       <section>
-        <h2 className="mb-4 text-2xl font-bold text-slate-900">Variants</h2>
-        <div className="rounded-lg bg-white p-6 shadow">
+        <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl font-bold text-slate-900">Variants</h2>
+        <div className="rounded-lg bg-white p-4 sm:p-6 shadow">
           <div className="flex flex-wrap gap-3">
             <Button variant="default">Default</Button>
             <Button variant="primary">Primary</Button>
@@ -32,8 +32,8 @@ export default function ButtonsDemo() {
 
       {/* Sizes */}
       <section>
-        <h2 className="mb-4 text-2xl font-bold text-slate-900">Sizes</h2>
-        <div className="rounded-lg bg-white p-6 shadow">
+        <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl font-bold text-slate-900">Sizes</h2>
+        <div className="rounded-lg bg-white p-4 sm:p-6 shadow">
           <div className="flex flex-wrap items-center gap-3">
             <Button size="sm">Small</Button>
             <Button size="md">Medium</Button>
@@ -44,8 +44,8 @@ export default function ButtonsDemo() {
 
       {/* Disabled State */}
       <section>
-        <h2 className="mb-4 text-2xl font-bold text-slate-900">Disabled State</h2>
-        <div className="rounded-lg bg-white p-6 shadow">
+        <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl font-bold text-slate-900">Disabled State</h2>
+        <div className="rounded-lg bg-white p-4 sm:p-6 shadow">
           <div className="flex flex-wrap gap-3">
             <Button disabled>Default Disabled</Button>
             <Button variant="primary" disabled>Primary Disabled</Button>
@@ -56,8 +56,8 @@ export default function ButtonsDemo() {
 
       {/* With Icons */}
       <section>
-        <h2 className="mb-4 text-2xl font-bold text-slate-900">With Icons</h2>
-        <div className="rounded-lg bg-white p-6 shadow">
+        <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl font-bold text-slate-900">With Icons</h2>
+        <div className="rounded-lg bg-white p-4 sm:p-6 shadow">
           <div className="flex flex-wrap gap-3">
             <Button variant="primary">
               <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,9 +83,9 @@ export default function ButtonsDemo() {
 
       {/* Code Example */}
       <section>
-        <h2 className="mb-4 text-2xl font-bold text-slate-900">Usage</h2>
-        <div className="rounded-lg bg-slate-900 p-6 text-slate-50">
-          <pre className="text-sm">
+        <h2 className="mb-3 sm:mb-4 text-xl sm:text-2xl font-bold text-slate-900">Usage</h2>
+        <div className="rounded-lg bg-slate-900 p-4 sm:p-6 text-slate-50 overflow-x-auto">
+          <pre className="text-xs sm:text-sm">
             <code>{`import { Button } from '@/components/ui/button';
 
 <Button variant="primary" size="md">
